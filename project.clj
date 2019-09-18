@@ -11,6 +11,8 @@
                  [ring/ring-jetty-adapter "1.7.1"]
                  [org.clojure/tools.cli "0.4.2"]
 
+                 [com.drewnoakes/metadata-extractor "2.12.0"]
+
                  ]
 
   :repl-options {:init-ns imagelocation.core}

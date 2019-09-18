@@ -3,6 +3,7 @@
             [clojure.string :as str]
             [clojure.tools.cli :refer [parse-opts]]
             [imagelocation.handler :as handler]
+            [imagelocation.image :as image]
             [ring.adapter.jetty :as jetty]))
 
 
@@ -18,7 +19,8 @@
        (str/join \newline)))
 
 (defn process-file [filename]
-  (pp/pprint (format "Process %s" filename)))
+  (pp/pprint (format "Processing %s" filename))
+  (pp/pprint (image/process filename)))
 
 
 (defn -main [& args]
