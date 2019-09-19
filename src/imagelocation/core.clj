@@ -4,7 +4,8 @@
             [clojure.tools.cli :refer [parse-opts]]
             [imagelocation.handler :as handler]
             [imagelocation.image :as image]
-            [ring.adapter.jetty :as jetty]))
+            [ring.adapter.jetty :as jetty])
+  (:gen-class))
 
 
 (def cli-options
