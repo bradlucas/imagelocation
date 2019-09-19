@@ -20,11 +20,14 @@
   "Return map of all image data fields
 "
   [filename]
-  (->> (io/file filename)
+  (try
+      (->> (io/file filename)
        ImageMetadataReader/readMetadata
        .getDirectories
        (map #(.getTags %))
-       (into {} (map extract-from-tag))))
+       (into {} (map extract-from-tag)))
+      (catch com.drew.imaging.ImageProcessingException e
+        (pp/pprint (.getMessage e)))))
 
 (defn get-location-data
   "Return `GPS Latitude` and `GPS Longitude` values in a map
@@ -86,6 +89,7 @@ https://www.google.com/maps/search/?api=1&query=lat,lng
 Google Map link
 "
   [filename]
-  (let [data (single-number-lat-lng (get-location-data filename))
-        link (build-map-link data)]
+  (let [location (get-location-data filename) 
+        data (if (and (:lat location) (:lng location)) (single-number-lat-lng location) location)
+        link (if (and (:lat data) (:lng data)) (build-map-link data))]
     (assoc data :link link)))
