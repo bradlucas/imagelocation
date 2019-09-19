@@ -5,6 +5,8 @@
 <div class="card mb-3">
   <h3 class="card-header">Image Location</h3>
 
+  {% if all result.lat result.lng result.link %}
+
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Lat/Lng {{result.lat}},{{result.lng}}</li>
   </ul>
@@ -16,6 +18,16 @@
   <div class="card-body">
     <a href="{{result.link}}" class="card-link">Google Map Link</a>
   </div>
+
+  {% else %}
+
+  <div class="card-body">
+    <p>The uploaded image does not have embedded location information.</p>
+  </div>
+
+  {% endif %}
+
+
 </div>
 
 
