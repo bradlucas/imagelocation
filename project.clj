@@ -13,6 +13,7 @@
 
                  [com.drewnoakes/metadata-extractor "2.12.0"]
 
+                 [selmer "1.12.12"]
                  ]
 
   :repl-options {:init-ns imagelocation.core}

@@ -1,0 +1,25 @@
+{% extends "templates/base.html" %}
+{% block content %}
+
+<div class="col-lg-6">
+
+<form action="/" method="post" enctype="multipart/form-data">
+  <fieldset>
+    <legend>Upload Image</legend>
+    <div class="form-group">
+      {% csrf-field %}
+      <label for="exampleInputFile">Select File</label>
+      <input type="file" name="file" size="20" "class="form-control-file" id="fileInputFile" aria-describedby="fileHelp">
+      <small id="fileHelp" class="form-text text-muted">Uploaded images are read for location information and then deleted. The system does not store uploaded images.</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+
+</form>
+
+</div>
+
+
+{% endblock %}
+
