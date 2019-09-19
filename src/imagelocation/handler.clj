@@ -23,7 +23,7 @@
         ("Error: No file uploaded")))))
 
 (defn about [req]
-  "About Image Location")
+  (parser/render-file "templates/about.html" {}))
 
 (defroutes app-routes
   (GET "/" [] index)
