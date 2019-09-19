@@ -23,7 +23,10 @@
         ("Error: No file uploaded")))))
 
 (defn about [req]
-  (parser/render-file "templates/about.html" {}))
+  (let [result {:lat 40.71117777777778
+                :lng -74.01142222222222
+                :link "https://www.google.com/maps/search/?api=1&query=40.71117777777778,-74.01142222222222"}]
+    (parser/render-file "templates/about.html" {:result result})))
 
 (defroutes app-routes
   (GET "/" [] index)
