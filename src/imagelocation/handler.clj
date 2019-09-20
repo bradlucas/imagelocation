@@ -6,6 +6,7 @@
             [ring.middleware.anti-forgery :refer [*anti-forgery-token*]]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.util.anti-forgery :refer [anti-forgery-field]]
+            [ring.util.response :as response]
             [selmer.parser :as parser]))
 
 (parser/add-tag! :csrf-field (fn [_ _] (anti-forgery-field)))
@@ -16,11 +17,14 @@
 (defn upload [req]
   (let [params (:params req)
         file (:file params)]
-    (let [tempfile (.getPath (:tempfile file))]
-      (if tempfile
-        (let [result (image/process tempfile)]
-          (parser/render-file "templates/result.html" {:result result}))
-        ("Error: No file uploaded")))))
+    (if (= (:size file) 0)
+      ;; redirect to original page
+      (response/redirect "/")
+      (let [tempfile (.getPath (:tempfile file))]
+        (if tempfile
+          (let [result (image/process tempfile)]
+            (parser/render-file "templates/result.html" {:result result}))
+          ("Error: No file uploaded"))))))
 
 (defn about [req]
   (let [result {:lat 40.71117777777778
