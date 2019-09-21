@@ -5,7 +5,7 @@ Provides a web interface and command line interface to process image files and e
 
 ## Usage
 
-``
+```
 usage: imagelocation.jar [options] [filename[s]]
 options:
   -w, --web   Start web app
