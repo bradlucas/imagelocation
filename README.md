@@ -1,14 +1,29 @@
 # imagelocation
 
-A Clojure library designed to ... well, that part is up to you.
+Provides a web interface and command line interface to process image files and extract their GPS information.
+
 
 ## Usage
 
-FIXME
+``
+usage: imagelocation.jar [options] [filename[s]]
+options:
+  -w, --web   Start web app
+  -h, --help  Show help usage
+
+Examples:
+java -jar imagelocation.jar -w           ;; start web app
+java -jar imagelocation.jar photo.jpg    ;; process single file
+java -jar imagelocation.jar *.jpg        ;; process all jpg files
+
+Output from command line processing:
+filename,lat,lng,link
+```
+
 
 ## License
 
-Copyright © 2019 FIXME
+Copyright © 2019 Brad Lucas, brad@beaconhill.com
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
